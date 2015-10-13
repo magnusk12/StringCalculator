@@ -1,0 +1,1 @@
+javac -classpath "lib/junit-4.10.jar" ./src/main/java/is/ru/stringcalculator/Calculator.java -d classes
