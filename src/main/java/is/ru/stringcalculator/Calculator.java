@@ -8,16 +8,7 @@ public class Calculator {
 		String textW = text.replaceAll("\\s+","");
 		String splitChar;
 		String[] tokens;
-		/*
-		if  (text.startsWith("//")) {
-			Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-			m.matches();
-			splitChar = m.group(1);
-			textW = m.group(2);
-		} else {
-			splitChar = ",";
-		}
-		*/
+
 		if (textW.equals(""))
 			return 0;
 		else {		// split string, even though it has only ne number...
