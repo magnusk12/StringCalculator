@@ -6,8 +6,8 @@ public class Calculator {
 	public static int add(String text) {
 		// clean text of white spaces
 		String textW = text.replaceAll("\\s+","");
-		String splitChar = "";
-
+		String splitChar = ",";
+		/*
 		if  (text.startsWith("//")) {
 			Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
 			m.matches();
@@ -16,7 +16,7 @@ public class Calculator {
 		} else {
 			splitChar = ",";
 		}
-
+		*/
 		if (textW.equals(""))
 			return 0;
 		else if (textW.contains(splitChar)) {
