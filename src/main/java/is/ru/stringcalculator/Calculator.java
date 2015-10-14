@@ -1,6 +1,7 @@
 package is.ru.stringcalculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.*;
 
 public class Calculator {
 	public static int add(String text) {
@@ -40,12 +41,22 @@ public class Calculator {
 
 	private static int toInt(String text) {
 		int answer = 0;
+		boolean minus = false;
+		List<Integer> minusNumbers = new ArrayList<Integer>();
 		try {
 			answer = Integer.parseInt(text);
+			if (answer < 0) {
+				minus = true;
+				minusNumbers.add(answer);
+			}
 		} catch (NumberFormatException e) {
 			// do some error handling 
 			System.out.println("Illegal input, exiting " + text);
 			System.exit(0);
+		} finally {
+			if (minus) {
+				throw new RuntimeException("Negatives not allowed:");
+			}
 		}
 		return answer;
 	}

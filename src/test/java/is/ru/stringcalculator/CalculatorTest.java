@@ -1,8 +1,8 @@
 package is.ru.stringcalculator;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-//import org.junit.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class CalculatorTest {
 
@@ -148,4 +148,15 @@ public class CalculatorTest {
 	public void testThreeCharsWithCustomSplitterMult() {
 		assertEquals(4, Calculator.add("//*\n1*2*1"));
 	}
+	@Test
+	public void OneNegativeNumberShouldRaiseExceptions() {
+		try {
+			Calculator.add("1,2,-3");
+			fail("Negatives not allowed: -3");
+		} catch (RuntimeException ex) {
+			// do...
+		}
+	}
+
+
 }
