@@ -126,14 +126,18 @@ public class CalculatorTest {
 	@Test
 	public void testSplitChar1() {
 		assertEquals(6, Calculator.add("//;\n1;2;3"));
-	}
+	} /*
 	@Test
 	public void testSplitChar2() {
-		assertEquals(4, Calculator.add("//;\n1;2;1"));
-	}
+		assertEquals(4, Calculator.add("\\;\n1;2;1"));
+	} 
 	@Test
 	public void testSplitChar3() {
-		assertEquals(4, Calculator.add("//p\n1p2p1"));
-	}
+		assertEquals(4, Calculator.add("\\p\n1p2p1"));
+	} 
+	@Test
+	public void testSplitChar4() {
+		assertEquals(4, Calculator.add("\\.\n1.2.1"));
+	} */
 
 }
