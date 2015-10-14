@@ -23,21 +23,26 @@ public class Calculator {
 			}
 
 			tokens = splitString(textW, splitChar);
-			boolean inclMinus = false;
-			String stringOfMinusNumbers = "";
-			for (int i=0; i<tokens.length; i++) {
-				if (toInt(tokens[i]) < 0) {
-					inclMinus = true;
-					stringOfMinusNumbers = stringOfMinusNumbers.concat(tokens[i]).concat(",");
-				}
-			}
-			if (inclMinus) {
-				throw new RuntimeException("Negatives not allowed: " + 
-					stringOfMinusNumbers.substring(0,stringOfMinusNumbers.length()-1) );
-			}
+			checkIfListContainsMinus(tokens);
 			return sumOfTokens(tokens);
 		}
 	}
+
+	private static void checkIfListContainsMinus(String[] tokens) {
+		boolean inclMinus = false;
+		String stringOfMinusNumbers = "";
+		for (int i=0; i<tokens.length; i++) {
+			if (toInt(tokens[i]) < 0) {
+				inclMinus = true;
+				stringOfMinusNumbers = stringOfMinusNumbers.concat(tokens[i]).concat(",");
+			}
+		}
+		if (inclMinus) {
+			throw new RuntimeException("Negatives not allowed: " + 
+				stringOfMinusNumbers.substring(0,stringOfMinusNumbers.length()-1) );
+		}
+	}
+
 
 	private static int sumOfTokens(String[] tokens){
 		int answer = 0;
