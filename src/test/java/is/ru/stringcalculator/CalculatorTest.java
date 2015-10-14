@@ -105,9 +105,26 @@ public class CalculatorTest {
 		assertEquals(0, Calculator.add(" , "));
 	}
 
+	// illegan input exits - normal
+	//@Test
+	//public void testWrongInput5() {
+	//	assertEquals(0, Calculator.add("a"));
+	//}
 	@Test
-	public void testWrongInput5() {
-		assertEquals(0, Calculator.add("a"));
+	public void testNewLine1() {
+		assertEquals(3, Calculator.add("1,\n2"));
+	}
+	@Test
+	public void testNewLine2() {
+		assertEquals(3, Calculator.add("\n1,2"));
+	}
+	@Test
+	public void testNewLine3() {
+		assertEquals(4, Calculator.add("1,2\n ,1"));
+	}
+	@Test
+	public void testNewLine4() {
+		assertEquals(4, Calculator.add("1,2,1\n"));
 	}
 
 }
