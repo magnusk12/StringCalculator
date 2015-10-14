@@ -19,8 +19,15 @@ public class Calculator {
 	}
 
 	private static int toInt(String text) {
-		return (Integer.parseInt(text));
-
+		int answer = 0;
+		try {
+			answer = Integer.parseInt(text);
+		} catch (NumberFormatException e) {
+			// do some error handling 
+			System.out.println("Illegal input, exiting");
+			System.exit(0);
+		}
+		return answer;
 	}
 
 }

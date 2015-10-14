@@ -105,5 +105,9 @@ public class CalculatorTest {
 		assertEquals(0, Calculator.add(" , "));
 	}
 
+	@Test
+	public void testWrongInput5() {
+		assertEquals(0, Calculator.add("a"));
+	}
 
 }
