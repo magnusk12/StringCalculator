@@ -16,7 +16,7 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void testEmptywithspace() {
+	public void testEmptySpaceOnly() {
 		assertEquals(0, Calculator.add(" "));
 	}
 
@@ -25,7 +25,7 @@ public class CalculatorTest {
 		assertEquals(1, Calculator.add("1"));
 	}
 	@Test
-	public void testOneNumber11space() {
+	public void testOneNumberLeadingSpace() {
 		assertEquals(1, Calculator.add(" 1"));
 	}
 	@Test
@@ -33,7 +33,7 @@ public class CalculatorTest {
 		assertEquals(1, Calculator.add(" 1 "));
 	}
 	@Test
-	public void testOneNumber13() {
+	public void testOneNumberFallowingSpace() {
 		assertEquals(1, Calculator.add("1 "));
 	}
 
@@ -42,53 +42,53 @@ public class CalculatorTest {
 		assertEquals(3, Calculator.add("1,2"));
 	}
 	@Test
-	public void testTwoNumbers11space() {
+	public void testTwoNumbersSpaceInFrontOfFirstNumber() {
 		assertEquals(3, Calculator.add(" 1,2"));
 	}
 	@Test
-	public void testTwoNumbers12space() {
+	public void testTwoNumbersSpaceBothSidesOfFirstNumber() {
 		assertEquals(3, Calculator.add(" 1 ,2"));
 	}
 	@Test
-	public void testTwoNumbers13space() {
+	public void testTwoNumbersSpaceInFrontOfSecondNumber() {
 		assertEquals(3, Calculator.add("1, 2"));
 	}
 	@Test
-	public void testTwoNumbers14space() {
+	public void testTwoNumbersSpaceAroundSecondNumber() {
 		assertEquals(3, Calculator.add("1, 2 "));
 	}
 	@Test
-	public void testTwoNumbers15space() {
+	public void testTwoNumbersSpaceAfterFirstNoAndBeforeSecondNo() {
 		assertEquals(3, Calculator.add("1 , 2"));
 	}
 	@Test
-	public void testTwoNumbers16space() {
+	public void testTwoNumbersSpaceBetweenAllChars() {
 		assertEquals(3, Calculator.add(" 1 , 2 "));
 	}
 
 	@Test
-	public void testMoreNumbers() {
+	public void testFourNumbers() {
 		assertEquals(10, Calculator.add("1,2,3,4"));
 	}
 	@Test
-	public void testMoreNumbers11space() {
+	public void testFourNumbersWithLeadingSpace() {
 		assertEquals(10, Calculator.add(" 1,2,3,4"));
 	}
 	@Test
-	public void testMoreNumbers12space() {
+	public void testThreeNumbersWithTrailingSpace() {
 		assertEquals(9, Calculator.add("2,3,4 "));
 	}
 	@Test
-	public void testMoreNumbers13space() {
+	public void testFiveNumbersWithSpaces() {
 		assertEquals(15, Calculator.add("1 , 2 , 3 , 4 , 5"));
 	}
 	@Test
-	public void testMoreNumbers14space() {
+	public void testFiveNumbersWithLongSpaces() {
 		assertEquals(11, Calculator.add("     1  ,  1  ,  2  ,  3  ,  4    "));
 	}
 
 	@Test
-	public void testWrongInput1() {
+	public void testWithNumberMissingAfterLastSplitter() {
 		assertEquals(1, Calculator.add("1,"));
 	}
 	// this throws error - normal...
@@ -97,11 +97,11 @@ public class CalculatorTest {
 	//	assertEquals(1, Calculator.add(",1"));
 	//}
 	@Test
-	public void testWrongInput3() {
+	public void testWithOnlySplitterAndNoNumbers() {
 		assertEquals(0, Calculator.add(","));
 	}
 	@Test
-	public void testWrongInput4() {
+	public void testWithOnlySplitterAndNoNumbersWithSpaces() {
 		assertEquals(0, Calculator.add(" , "));
 	}
 
@@ -111,33 +111,33 @@ public class CalculatorTest {
 	//	assertEquals(0, Calculator.add("a"));
 	//}
 	@Test
-	public void testNewLine1() {
+	public void testTwoCharsWithNewLineInBetween() {
 		assertEquals(3, Calculator.add("1,\n2"));
 	}
 	@Test
-	public void testNewLine2() {
+	public void testTwoCharsStartingWithNewLine() {
 		assertEquals(3, Calculator.add("\n1,2"));
 	}
 	@Test
-	public void testNewLine3() {
+	public void testThreeCharsWithNewLineInBetween() {
 		assertEquals(4, Calculator.add("1,2\n ,1"));
 	}
 
 	@Test
-	public void testSplitChar1() {
+	public void testThreeCharsWithCustomSplitterSizeOne() {
 		assertEquals(6, Calculator.add("//;\n1;2;3"));
 	}
 	@Test
-	public void testSplitChar2() {
-		assertEquals(4, Calculator.add("//;\n1;2;1"));
+	public void testFourCharsWithCustomSplitterSizeOne() {
+		assertEquals(14, Calculator.add("//;\n1;2;1;10"));
 	}
 
 	@Test
-	public void testSplitCharLong1() {
+	public void testThreeCharsWithCustomSplitterSizeTwo() {
 		assertEquals(4, Calculator.add("//pp\n1pp2pp1"));
 	}
 	@Test
-	public void testSplitCharLong2() {
-		assertEquals(4, Calculator.add("//sp\n1sp2sp1"));
+	public void testThreeCharsWithCustomSplitterSizeThree() {
+		assertEquals(4, Calculator.add("//sps\n1sps2sps1"));
 	}
 }
