@@ -39,24 +39,18 @@ public class Calculator {
 		return text.split(Pattern.quote(splitChar));
 	}
 
+
 	private static int toInt(String text) {
 		int answer = 0;
 		boolean minus = false;
-		List<Integer> minusNumbers = new ArrayList<Integer>();
+		List<Integer> minusNumbersList = new ArrayList<Integer>();
 		try {
 			answer = Integer.parseInt(text);
-			if (answer < 0) {
-				minus = true;
-				minusNumbers.add(answer);
-			}
 		} catch (NumberFormatException e) {
 			// do some error handling 
 			System.out.println("Illegal input, exiting " + text);
 			System.exit(0);
-		} finally {
-			if (minus) {
-				throw new RuntimeException("Negatives not allowed:");
-			}
+
 		}
 		return answer;
 	}

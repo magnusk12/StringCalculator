@@ -148,15 +148,25 @@ public class CalculatorTest {
 	public void testThreeCharsWithCustomSplitterMult() {
 		assertEquals(4, Calculator.add("//*\n1*2*1"));
 	}
+/*
 	@Test
 	public void OneNegativeNumberShouldRaiseExceptions() {
 		try {
 			Calculator.add("1,2,-3");
-			fail("Negatives not allowed: -3");
+			fail("Exception expected.");
 		} catch (RuntimeException ex) {
-			// do...
+			assertEquals("Negatives not allowed: -3", ex.getMessage());
+		}
+	}
+	@Test
+	public void TwoNegativeNumberShouldRaiseExceptions() {
+		try {
+			Calculator.add("1,-2,-3");
+			fail("Exception expected.");
+		} catch (RuntimeException ex) {
+			assertEquals("Negatives not allowed: -2, -3", ex.getMessage());
 		}
 	}
 
-
+*/
 }
