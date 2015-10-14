@@ -140,4 +140,12 @@ public class CalculatorTest {
 	public void testThreeCharsWithCustomSplitterSizeThree() {
 		assertEquals(4, Calculator.add("//sps\n1sps2sps1"));
 	}
+	@Test
+	public void testThreeCharsWithCustomSplitterPlus() {
+		assertEquals(4, Calculator.add("//+\n1+2+1"));
+	}
+	@Test
+	public void testThreeCharsWithCustomSplitterMult() {
+		assertEquals(4, Calculator.add("//*\n1*2*1"));
+	}
 }

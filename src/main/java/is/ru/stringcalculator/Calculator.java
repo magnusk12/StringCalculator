@@ -35,7 +35,7 @@ public class Calculator {
 	}
 
 	private static String[] splitString(String text, String splitChar) {
-		return text.split(splitChar);
+		return text.split(Pattern.quote(splitChar));
 	}
 
 	private static int toInt(String text) {
