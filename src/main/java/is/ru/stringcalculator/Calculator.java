@@ -13,7 +13,7 @@ public class Calculator {
 			return 0;
 		else {		// split string, even though it has only ne number...
 			if (textW.startsWith("//") ) {
-				Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+				Matcher m = Pattern.compile("//(.*)\n(.*)").matcher(text);
 				m.matches();
 				splitChar = m.group(1);
 				textW = m.group(2);

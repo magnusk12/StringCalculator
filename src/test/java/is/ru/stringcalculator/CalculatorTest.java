@@ -131,9 +131,13 @@ public class CalculatorTest {
 	public void testSplitChar2() {
 		assertEquals(4, Calculator.add("//;\n1;2;1"));
 	}
+
 	@Test
-	public void testSplitChar3() {
-		assertEquals(4, Calculator.add("//p\n1p2p1"));
+	public void testSplitCharLong1() {
+		assertEquals(4, Calculator.add("//pp\n1pp2pp1"));
 	}
-	
+	@Test
+	public void testSplitCharLong2() {
+		assertEquals(4, Calculator.add("//sp\n1sp2sp1"));
+	}
 }
