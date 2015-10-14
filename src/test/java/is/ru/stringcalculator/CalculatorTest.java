@@ -148,6 +148,7 @@ public class CalculatorTest {
 	public void testThreeCharsWithCustomSplitterMult() {
 		assertEquals(4, Calculator.add("//,\n1,2,1"));
 	}
+
 	@Test
 	public void OneNegativeNumberShouldRaiseExceptions() {
 		try {
@@ -166,6 +167,19 @@ public class CalculatorTest {
 		} catch (RuntimeException ex) {
 			assertEquals("Negatives not allowed: -1,-2,-3", ex.getMessage());
 		}
+	}
+
+	@Test
+	public void testOneBigNumber() {
+		assertEquals(1000, Calculator.add("1000"));
+	}
+	@Test
+	public void testOneBigNumberToLarge() {
+		assertEquals(0, Calculator.add("1001"));
+	}
+	@Test
+	public void testOneBigNumberToLarger() {
+		assertEquals(0, Calculator.add("35577"));
 	}
 
 }

@@ -63,6 +63,9 @@ public class Calculator {
 		List<Integer> minusNumbersList = new ArrayList<Integer>();
 		try {
 			answer = Integer.parseInt(text);
+			if (answer > 1000) {
+				answer = 0;
+			}
 		} catch (NumberFormatException e) {
 			// do some error handling 
 			System.out.println("Illegal input, exiting " + text);
