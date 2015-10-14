@@ -6,7 +6,7 @@ public class Calculator {
 	public static int add(String text) {
 		// clean text of white spaces
 		String textW = text.replaceAll("\\s+","");
-		String splitChar = ",";
+		String splitChar;
 		String[] tokens;
 		/*
 		if  (text.startsWith("//")) {
@@ -20,7 +20,16 @@ public class Calculator {
 		*/
 		if (textW.equals(""))
 			return 0;
-		else if (textW.contains(splitChar)) {
+		else {		// split string, even though it has only ne number...
+			if (textW.startsWith("//") ) {
+				Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+				m.matches();
+				splitChar = m.group(1);
+				textW = m.group(2);
+			} else {
+				splitChar = ",";
+			}
+
 			tokens = splitString(textW, splitChar);
 			int answer = 0;
 			for (int i=0; i< tokens.length; i++) {
@@ -28,8 +37,6 @@ public class Calculator {
 			}
 			return answer;
 		}
-		else	// no parameters
-			return (toInt(textW));
 	}
 
 	private static String[] splitString(String text, String splitChar) {

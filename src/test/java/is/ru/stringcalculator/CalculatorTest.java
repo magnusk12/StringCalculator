@@ -122,7 +122,7 @@ public class CalculatorTest {
 	public void testNewLine3() {
 		assertEquals(4, Calculator.add("1,2\n ,1"));
 	}
-	/*
+
 	@Test
 	public void testSplitChar1() {
 		assertEquals(6, Calculator.add("//;\n1;2;3"));
@@ -135,5 +135,5 @@ public class CalculatorTest {
 	public void testSplitChar3() {
 		assertEquals(4, Calculator.add("//p\n1p2p1"));
 	}
-	*/
+	
 }
