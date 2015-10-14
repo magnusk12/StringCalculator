@@ -2,15 +2,20 @@ package is.ru.stringcalculator;
 
 public class Calculator {
 	public static int add(String text) {
-		text.replaceAll("\\s+","");
-		if (text.equals(""))
+		// clean text of white spaces
+		String textW = text.replaceAll("\\s+","");
+		if (textW.equals(""))
 			return 0;
-		else if (text.contains(",")) {
-			String[] split = text.split(",");
-			return (toInt(split[0]) + toInt(split[1]) );
+		else if (textW.contains(",")) {
+			String[] split = textW.split(",");
+			int answer = 0;
+			for (int i=0; i< split.length; i++) {
+				answer += toInt(split[i]);
+			}
+			return answer;
 		}
-		else
-			return (toInt(text));
+		else	// no parameters
+			return (toInt(textW));
 	}
 
 	private static int toInt(String text) {

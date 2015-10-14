@@ -16,7 +16,7 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void testEmptywith space() {
+	public void testEmptywithspace() {
 		assertEquals(0, Calculator.add(" "));
 	}
 
@@ -65,6 +65,28 @@ public class CalculatorTest {
 	public void testTwoNumbers16space() {
 		assertEquals(3, Calculator.add(" 1 , 2 "));
 	}
+
+	@Test
+	public void testMoreNumbers() {
+		assertEquals(10, Calculator.add("1,2,3,4"));
+	}
+	@Test
+	public void testMoreNumbers11space() {
+		assertEquals(10, Calculator.add(" 1,2,3,4"));
+	}
+	@Test
+	public void testMoreNumbers12space() {
+		assertEquals(9, Calculator.add("2,3,4 "));
+	}
+	@Test
+	public void testMoreNumbers13space() {
+		assertEquals(15, Calculator.add("1 , 2 , 3 , 4 , 5"));
+	}
+	@Test
+	public void testMoreNumbers14space() {
+		assertEquals(11, Calculator.add("     1  ,  1  ,  2  ,  3  ,  4    "));
+	}
+
 
 
 }
