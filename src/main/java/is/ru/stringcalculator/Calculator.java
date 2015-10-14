@@ -7,6 +7,7 @@ public class Calculator {
 		// clean text of white spaces
 		String textW = text.replaceAll("\\s+","");
 		String splitChar = ",";
+		String[] tokens;
 		/*
 		if  (text.startsWith("//")) {
 			Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
@@ -20,15 +21,19 @@ public class Calculator {
 		if (textW.equals(""))
 			return 0;
 		else if (textW.contains(splitChar)) {
-			String[] split = textW.split(splitChar);
+			tokens = splitString(textW, splitChar);
 			int answer = 0;
-			for (int i=0; i< split.length; i++) {
-				answer += toInt(split[i]);
+			for (int i=0; i< tokens.length; i++) {
+				answer += toInt(tokens[i]);
 			}
 			return answer;
 		}
 		else	// no parameters
 			return (toInt(textW));
+	}
+
+	private static String[] splitString(String text, String splitChar) {
+		return text.split(splitChar);
 	}
 
 	private static int toInt(String text) {
