@@ -87,6 +87,23 @@ public class CalculatorTest {
 		assertEquals(11, Calculator.add("     1  ,  1  ,  2  ,  3  ,  4    "));
 	}
 
+	@Test
+	public void testWrongInput1() {
+		assertEquals(1, Calculator.add("1,"));
+	}
+	// this throws error - normal...
+	//@Test
+	//public void testWrongInput2() {
+	//	assertEquals(1, Calculator.add(",1"));
+	//}
+	@Test
+	public void testWrongInput3() {
+		assertEquals(0, Calculator.add(","));
+	}
+	@Test
+	public void testWrongInput4() {
+		assertEquals(0, Calculator.add(" , "));
+	}
 
 
 }
