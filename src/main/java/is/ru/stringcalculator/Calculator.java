@@ -31,12 +31,16 @@ public class Calculator {
 			}
 
 			tokens = splitString(textW, splitChar);
-			int answer = 0;
-			for (int i=0; i< tokens.length; i++) {
-				answer += toInt(tokens[i]);
-			}
-			return answer;
+			return sumOfTokens(tokens);
 		}
+	}
+
+	private static int sumOfTokens(String[] tokens){
+		int answer = 0;
+		for (int i=0; i< tokens.length; i++) {
+			answer += toInt(tokens[i]);
+		}
+		return answer;
 	}
 
 	private static String[] splitString(String text, String splitChar) {
