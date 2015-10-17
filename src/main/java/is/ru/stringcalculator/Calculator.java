@@ -14,7 +14,7 @@ public class Calculator {
 			return 0;
 		else {		// split string, even though it has only ne number...
 			if (textW.startsWith("//") ) {
-				Matcher m = Pattern.compile("//(.*)\n(.*)").matcher(text);
+				Matcher m = Pattern.compile("//(\\[*.*\\]*)\n(.*)").matcher(text);
 				m.matches();
 				splitChar = m.group(1);
 				textW = m.group(2);
@@ -53,6 +53,10 @@ public class Calculator {
 	}
 
 	private static String[] splitString(String text, String splitChar) {
+		if (splitChar.startsWith("[")) {
+			int closePos = splitChar.indexOf("]");
+			splitChar = splitChar.substring(1,closePos);
+		}
 		return text.split(Pattern.quote(splitChar));
 	}
 

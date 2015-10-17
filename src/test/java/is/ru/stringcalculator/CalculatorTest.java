@@ -182,4 +182,12 @@ public class CalculatorTest {
 		assertEquals(0, Calculator.add("35577"));
 	}
 
+	@Test
+	public void testBaseWithOneBracekts() {
+		assertEquals(4, Calculator.add("//[,]\n1,2,1"));
+	}
+	@Test
+	public void testWithOneLongBracekts() {
+		assertEquals(4, Calculator.add("//[,,,]\n1,,,2,,,1"));
+	}
 }
