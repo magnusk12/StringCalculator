@@ -54,10 +54,18 @@ public class Calculator {
 
 	private static String[] splitString(String text, String splitChar) {
 		if (splitChar.startsWith("[")) {
-			int closePos = splitChar.indexOf("]");
-			splitChar = splitChar.substring(1,closePos);
+			int countBracket = splitChar.length() - splitChar.replace("[","").length();
+			if (countBracket <= 1) {
+				int closePos = splitChar.indexOf("]");
+				splitChar = splitChar.substring(1,closePos);
+			} else {
+				// to implement
+			}
+			return text.split(Pattern.quote(splitChar));
+
+		} else {
+			return text.split(Pattern.quote(splitChar));
 		}
-		return text.split(Pattern.quote(splitChar));
 	}
 
 
