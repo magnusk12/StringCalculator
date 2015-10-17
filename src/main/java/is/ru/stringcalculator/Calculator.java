@@ -12,18 +12,20 @@ public class Calculator {
 
 		if (textW.equals(""))
 			return 0;
-		else {		// split string, even though it has only ne number...
+		else {		// split string, even though it has only one number...
 			if (textW.startsWith("//") ) {
 				Matcher m = Pattern.compile("//(\\[*.*\\]*)\n(.*)").matcher(text);
 				m.matches();
 				splitChar = m.group(1);
 				textW = m.group(2);
 			} else {
-				splitChar = ",";
+				splitChar = ",";	// default split char
 			}
-
+			// split input string into tokens
 			tokens = splitString(textW, splitChar);
+			// throw error if string contains minus numbers
 			checkIfListContainsMinus(tokens);
+
 			return sumOfTokens(tokens);
 		}
 	}
@@ -34,6 +36,7 @@ public class Calculator {
 		for (int i=0; i<tokens.length; i++) {
 			if (toInt(tokens[i]) < 0) {
 				inclMinus = true;
+				// build string of all minus numbers
 				stringOfMinusNumbers = stringOfMinusNumbers.concat(tokens[i]).concat(",");
 			}
 		}
@@ -53,8 +56,6 @@ public class Calculator {
 	}
 
 	private static String[] splitString(String text, String splitChar) {
-		String tmpText = text;
-		String tmpSplitChar = splitChar;
 		if (splitChar.startsWith("[")) {
 			// count number of brackets = number of splitters
 			int countBracket = splitChar.length() - splitChar.replace("[","").length();
@@ -64,6 +65,8 @@ public class Calculator {
 				splitChar = splitChar.substring(1,closePos);
 				return text.split(Pattern.quote(splitChar));
 			} else {	// many brackets
+				String tmpText = text;
+				String tmpSplitChar = splitChar;
 				for (int i=0; i<countBracket; i++) {
 					int closePos = tmpSplitChar.indexOf("]");
 					String thisSplit = tmpSplitChar.substring(1,closePos);
@@ -82,7 +85,6 @@ public class Calculator {
 	private static int toInt(String text) {
 		int answer = 0;
 		boolean minus = false;
-		List<Integer> minusNumbersList = new ArrayList<Integer>();
 		try {
 			answer = Integer.parseInt(text);
 			if (answer > 1000) {
@@ -96,9 +98,4 @@ public class Calculator {
 		}
 		return answer;
 	}
-
-	public static void main (String[] args) {
-		add(args[0]);
-	}
-
 }
