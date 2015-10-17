@@ -190,4 +190,20 @@ public class CalculatorTest {
 	public void testWithOneLongBracekts() {
 		assertEquals(4, Calculator.add("//[,,,]\n1,,,2,,,1"));
 	}
+	@Test
+	public void testWithTwoBrackets() {
+		assertEquals(4, Calculator.add("//[:][;]\n1:2;1"));
+	}
+	@Test
+	public void testWithThreeBrackets() {
+		assertEquals(14, Calculator.add("//[:][;][,]\n1:2;1,10"));
+	}
+	@Test
+	public void testWithThreeLongBrackets() {
+		assertEquals(14, Calculator.add("//[::][;][,,,,]\n1::2;1,,,,10"));
+	}
+	@Test
+	public void testWithThreeLongBracketsAndSameSplitterOften() {
+		assertEquals(17, Calculator.add("//[::][;][,,,,]\n1::2;1,,,,10::3"));
+	}
 }

@@ -53,17 +53,27 @@ public class Calculator {
 	}
 
 	private static String[] splitString(String text, String splitChar) {
+		String tmpText = text;
+		String tmpSplitChar = splitChar;
 		if (splitChar.startsWith("[")) {
+			// count number of brackets = number of splitters
 			int countBracket = splitChar.length() - splitChar.replace("[","").length();
+			// only one bracket
 			if (countBracket <= 1) {
 				int closePos = splitChar.indexOf("]");
 				splitChar = splitChar.substring(1,closePos);
-			} else {
-				// to implement
+				return text.split(Pattern.quote(splitChar));
+			} else {	// many brackets
+				for (int i=0; i<countBracket; i++) {
+					int closePos = tmpSplitChar.indexOf("]");
+					String thisSplit = tmpSplitChar.substring(1,closePos);
+					tmpSplitChar = tmpSplitChar.substring(closePos+1,tmpSplitChar.length());
+					// fake new splitter
+					tmpText = tmpText.replace(thisSplit, ",");
+				}
+				return tmpText.split(Pattern.quote(","));
 			}
-			return text.split(Pattern.quote(splitChar));
-
-		} else {
+		} else {	// no bracket
 			return text.split(Pattern.quote(splitChar));
 		}
 	}
