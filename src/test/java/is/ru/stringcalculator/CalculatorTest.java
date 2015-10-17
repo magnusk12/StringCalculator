@@ -91,11 +91,7 @@ public class CalculatorTest {
 	public void testWithNumberMissingAfterLastSplitter() {
 		assertEquals(1, Calculator.add("1,"));
 	}
-	// this throws error - normal...
-	//@Test
-	//public void testWrongInput2() {
-	//	assertEquals(1, Calculator.add(",1"));
-	//}
+
 	@Test
 	public void testWithOnlySplitterAndNoNumbers() {
 		assertEquals(0, Calculator.add(","));
@@ -105,11 +101,6 @@ public class CalculatorTest {
 		assertEquals(0, Calculator.add(" , "));
 	}
 
-	// illegan input exits - normal
-	//@Test
-	//public void testWrongInput5() {
-	//	assertEquals(0, Calculator.add("a"));
-	//}
 	@Test
 	public void testTwoCharsWithNewLineInBetween() {
 		assertEquals(3, Calculator.add("1,\n2"));
@@ -206,4 +197,34 @@ public class CalculatorTest {
 	public void testWithThreeLongBracketsAndSameSplitterOften() {
 		assertEquals(17, Calculator.add("//[::][;][,,,,]\n1::2;1,,,,10::3"));
 	}
+
+	@Test
+	public void charInFirstShouldRaiseExceptions() {
+		try {
+			Calculator.add("a,2,3");
+			fail("Exception expected.");
+		} catch (NumberFormatException ex) {
+			assertEquals("Illegal input : a", ex.getMessage());
+		}
+	}
+	@Test
+	public void charInSecondShouldRaiseExceptions() {
+		try {
+			Calculator.add("1,cc,3");
+			fail("Exception expected.");
+		} catch (NumberFormatException ex) {
+			assertEquals("Illegal input : cc", ex.getMessage());
+		}
+	}
+	@Test
+	public void charInLastShouldRaiseExceptions() {
+		try {
+			Calculator.add("2,3,b");
+			fail("Exception expected.");
+		} catch (NumberFormatException ex) {
+			assertEquals("Illegal input : b", ex.getMessage());
+		}
+	}
+
+
 }

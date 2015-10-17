@@ -92,8 +92,10 @@ public class Calculator {
 			}
 		} catch (NumberFormatException e) {
 			// do some error handling 
-			System.out.println("Illegal input, exiting " + text);
-			System.exit(0);
+			//System.out.println("Illegal input, exiting : " + text);
+			//System.exit(0);
+			answer = 0;
+			throw new NumberFormatException("Illegal input : " + text);
 
 		}
 		return answer;
