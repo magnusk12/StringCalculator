@@ -46,7 +46,6 @@ public class Calculator {
 		}
 	}
 
-
 	private static int sumOfTokens(String[] tokens){
 		int answer = 0;
 		for (int i=0; i< tokens.length; i++) {
@@ -91,12 +90,8 @@ public class Calculator {
 				answer = 0;
 			}
 		} catch (NumberFormatException e) {
-			// do some error handling 
-			//System.out.println("Illegal input, exiting : " + text);
-			//System.exit(0);
 			answer = 0;
 			throw new NumberFormatException("Illegal input : " + text);
-
 		}
 		return answer;
 	}
